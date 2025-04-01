@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { AuthContext } from "../context/auth.context"
-import { Navigate } from "react-router-dom"
+
 
 // este componente se encarga de proteger las páginas que solo son accesibles para los usuarios que están logeados.
 
