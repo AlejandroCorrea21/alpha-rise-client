@@ -62,7 +62,4 @@ function AuthWrapper(props) {
   )
 }
 
-export {
-  AuthWrapper,
-  AuthContext
-}
+export { AuthWrapper, AuthContext }

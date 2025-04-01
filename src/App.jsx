@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage"
 import Login from "./pages/auth/Login"
 import Signup from "./pages/auth/Signup"
 import Admin from "./pages/Admin"
+import PrivatePage from "./pages/PrivatePage";
 
 // components
 import Navbar from "./components/Navbar"
@@ -22,7 +23,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/private-page-example" element={ <OnlyPrivate> </OnlyPrivate> } />
+        <Route path="/private-page" element={<OnlyPrivate><PrivatePage /></OnlyPrivate>} />
+
 
       </Routes>
     </div>

@@ -21,7 +21,7 @@ function Login() {
 
     e.preventDefault();
 
-    // ... contactar al backend para validar credenciales de usuario aqui
+    //Contactar al backend para validar credenciales de usuario
 
     try {
       
@@ -37,7 +37,7 @@ function Login() {
       // validar el token y saber quien es el usuario dueño del token. Actualizamos los estados.
       await authenticateUser()
 
-      navigate("/private-page-example")
+      navigate("/private-page")
 
     } catch (error) {
       console.log(error)

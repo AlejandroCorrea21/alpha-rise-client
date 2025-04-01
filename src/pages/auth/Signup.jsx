@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import service from "../../services/config.services";
+
 
 function Signup() {
 
@@ -14,8 +16,8 @@ function Signup() {
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const handleSignup = async (e) => {
+    
     e.preventDefault();
-
     // ... contactar al backend para registrar al usuario aqui
     try {
       
@@ -43,7 +45,7 @@ function Signup() {
   return (
     <div>
 
-      <h1>Formulario de Registro</h1>
+      <h1>Página de Registro</h1>
     
       <form onSubmit={handleSignup}>
 

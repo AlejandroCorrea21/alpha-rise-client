@@ -32,7 +32,7 @@ function Navbar() {
       {isLoggedIn === true 
       ?
         <>
-          <Link to="/private-page-example">Ejemplo Privado</Link>
+          <Link to="/private-page">Ejemplo Privado</Link>
           <Link onClick={handleLogout}>Cerrar sesión</Link>
         </>
       : 
