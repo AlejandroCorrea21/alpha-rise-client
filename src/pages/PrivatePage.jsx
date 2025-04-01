@@ -25,7 +25,7 @@ function PrivatePage() {
 
     try {
       
-      const response = await service.delete("/auth/borrar-resource")
+      const response = await service.delete("/auth/delete-resource")
       console.log(response)
 
     } catch (error) {
