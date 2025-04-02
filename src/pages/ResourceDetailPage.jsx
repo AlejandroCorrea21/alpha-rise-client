@@ -54,9 +54,9 @@ return (
       {comments.map((comment) => (
 
         <div key={comment._id}>
-          <p>{comment.user}: {comment.text}</p>
+          <p>{comment.user.username}: {comment.text}</p>
         </div>
-        
+
       ))}
       
   </div>
