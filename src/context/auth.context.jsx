@@ -35,11 +35,11 @@ function AuthWrapper(props) {
       setIsAuthenticatingUser(false)
       
     } catch (error) {
-      // si la llamada entra en el catch, significa que el usuario no pudo ser validado
+
       console.log(error)
       setIsLoggedIn(false)
       setLoggedUserId(null)
-      setUserRole(null) //* EXTRA. Roles
+      setUserRole(null)
       setIsAuthenticatingUser(false)
     }
 
