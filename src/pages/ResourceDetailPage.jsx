@@ -30,7 +30,7 @@ const getResources = async () => {
 
 const getComments = async () => {
   try {
-    const response = await service.get(`/resources/${id}/comments`);
+    const response = await service.get(`/comments/resources/${id}`);
     setComments(response.data);
   } catch (error) {
     console.log(error);
@@ -52,9 +52,11 @@ return (
 
     <h2>Comentarios:</h2>
       {comments.map((comment) => (
-        <p key={comment._id}>
+
+        <div key={comment._id}>
           <p>{comment.user}: {comment.text}</p>
-        </p>
+        </div>
+        
       ))}
       
   </div>
