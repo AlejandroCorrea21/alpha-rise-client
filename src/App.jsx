@@ -37,7 +37,7 @@ function App() {
         <Route path="/FavoritesPage" element={<FavoritesPage />} />
         <Route path="/PageNotFound" element={<PageNotFound />} />
         <Route path="/ResourcePage" element={<ResourcePage />} />
-        <Route path="/ResourceDetailPage" element={<ResourceDetailPage />} />
+        <Route path="/resources/:id" element={<ResourceDetailPage />} />
 
       </Routes>
     </div>

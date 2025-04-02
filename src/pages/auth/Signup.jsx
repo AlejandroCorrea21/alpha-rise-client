@@ -21,7 +21,6 @@ function Signup() {
     // ... contactar al backend para registrar al usuario aqui
     try {
       
-      // await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, {
       await service.post(`/auth/signup`, {
         username: username,
         email:email,
