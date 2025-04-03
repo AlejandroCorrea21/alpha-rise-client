@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 import service from "../services/config.services";
 
-// componente contexto => el que comparte los estados por al app
+// componente contexto => el que comparte los estados por la app
 const AuthContext = createContext()
 
 // componente wrapper => el que envuelve a la app y crea los estados
@@ -31,7 +31,7 @@ function AuthWrapper(props) {
       // si la llamada llega a este punto significa que el usuario fue correctamente validado
       setIsLoggedIn(true)
       setLoggedUserId(response.data.payload._id)
-      setUserRole(response.data.payload.role) //* EXTRA. Roles
+      setUserRole(response.data.payload.role) // Aquí guarda rol de usuario
       setIsAuthenticatingUser(false)
       
     } catch (error) {

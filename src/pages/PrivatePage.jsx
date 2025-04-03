@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import service from '../services/config.services'
+import { AuthContext } from "../context/auth.context"
 
 function PrivatePage() {
 
   const [dataOnlyForLoggedUsers, setData] = useState(null)
+  const { userRole } = useContext(AuthContext)
 
   useEffect(() => {
     getData()
@@ -38,12 +40,12 @@ function PrivatePage() {
 
   return (
     <div>
-      
       <h3>Página privada</h3>
       <p>Solo usuarios que hayan validado credenciales pueden acceder aquí.</p>
 
-      <button onClick={handleDelete}>Borrar (ADMIN)</button>
-
+      {userRole === "admin" && (
+        <button onClick={handleDelete}>Borrar (ADMIN)</button>
+      )}
     </div>
   )
 }

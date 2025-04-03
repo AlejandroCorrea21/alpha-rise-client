@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import service from "../services/config.services";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function ResourceDetailPage() {
 
@@ -10,6 +11,7 @@ function ResourceDetailPage() {
   const [resource, setResource] = useState(null)
   const [comments, setComments] = useState([])
   const navigate = useNavigate()
+  const { userRole } = useContext(AuthContext)
   
   useEffect(() => {
     getResources();
@@ -37,10 +39,17 @@ const getComments = async () => {
   }
 };
 
+const handleDelete = async () => {
+  try {
+    const response = await service.delete(`/resources/${resource._id}`)
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
 if (!resource || comments === null) {  
   return <div className="spinner"></div>;  
 }
-
 
 const volverAtras = () => {
   navigate("/ResourcePage");
@@ -50,6 +59,11 @@ return (
   <div>
     <h1>{resource.title}</h1>
     <p>{resource.content}</p>
+
+    {userRole === "admin" && (
+        <button onClick={handleDelete}>Borrar (ADMIN)</button>
+      )}
+
     <p>Categoria: {resource.category}</p>
     <p>Autor: {resource.author}</p>
 
@@ -68,6 +82,7 @@ return (
         </div>
       ))
     )}
+    
   </div>
 );
 
