@@ -3,6 +3,7 @@ import service from '../services/config.services'
 import { AuthContext } from "../context/auth.context"
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 function PrivatePage() {
 
   const [dataOnlyForLoggedUsers, setData] = useState(null)
@@ -25,31 +26,13 @@ function PrivatePage() {
     }
   }
 
-  const handleDelete = async () => {
-
-    try {
-      
-      const response = await service.delete("/auth/delete-resource")
-      console.log(response)
-
-    } catch (error) {
-      console.log(error)
-    }
-
-  }
-
-  // loading handler here
-
   return (
     <div>
       <h3>Te has logeado correctamente</h3>
       <p>Vuelve a la página principal</p>
 
       <button onClick={() => navigate("/")}>Home</button>
-      
-      {userRole === "admin" && (
-        <button onClick={handleDelete}>Borrar (ADMIN)</button>
-      )}
+
     </div>
   )
 }

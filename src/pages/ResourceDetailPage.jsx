@@ -10,6 +10,7 @@ function ResourceDetailPage() {
   const { id } = useParams();
   const [resource, setResource] = useState(null)
   const [comments, setComments] = useState([])
+  const [newComment, setNewComment] = useState("")
   const navigate = useNavigate()
   const { userRole } = useContext(AuthContext)
   
@@ -41,6 +42,7 @@ const getComments = async () => {
 
 // botones
 
+// botón borrar recurso (admin)
 const handleDelete = async () => {
   try {
     const response = await service.delete(`/resources/${resource._id}`)
@@ -50,6 +52,36 @@ const handleDelete = async () => {
     console.log(error)
   }
 }
+
+//boton crear comentario
+const handleCommentSubmit = async (event) => {
+  event.preventDefault();
+
+  try {
+    await service.post(`/comments`, {
+      text: newComment,
+      resource: id,
+    });
+
+  console.log("Comentario creado")
+    setNewComment("");
+    getComments();
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+//botón borrar comentario
+const handleCommentDelete = async () => {
+  try {
+    const response = await service.delete(`/comments/${comment._id}`)
+    console.log(response)
+    getComments();
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 if (!resource || comments === null) {   //spinner
   return <div className="spinner"></div>;  
 }
@@ -66,7 +98,7 @@ return (
     {userRole === "admin" && (
       <div>
         <button onClick={() => navigate(`/edit-resource/${id}`)}>
-          Editar Recurso
+          Editar (ADMIN)
           </button>
         <button onClick={handleDelete}>Borrar (ADMIN)</button>
       </div>)}
@@ -86,15 +118,21 @@ return (
     ) : (
       comments.map((comment) => (
         <div key={comment._id}>
-          <p>{comment.user.username}: {comment.text}</p>
+          <p>{comment.user.username}: {comment.text}</p> 
+          
+          {(userRole === "admin" || comment.user._id === userRole) && (
+            
+            <button onClick={() => handleCommentDelete(comment._id)}>
+            Borrar</button>
+          )}
         </div>
       ))
     )}
-    
+    <button onClick={handleCommentSubmit}>Añadir Comentario</button>
+    <input type="text" value={newComment} onChange={(event) => setNewComment(event.target.value)} />
   </div>
 );
 
 }
-
 
   export default ResourceDetailPage
