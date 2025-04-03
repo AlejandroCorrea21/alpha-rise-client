@@ -36,7 +36,7 @@ function Login() {
       // validar el token y saber quien es el usuario dueño del token. Actualizamos los estados.
       await authenticateUser()
 
-      navigate("/private-page")
+      navigate("/")
 
     } catch (error) {
       console.log(error)

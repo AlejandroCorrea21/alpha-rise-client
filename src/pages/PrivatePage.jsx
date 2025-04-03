@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import service from '../services/config.services'
 import { AuthContext } from "../context/auth.context"
-
+import { useContext } from 'react'
 function PrivatePage() {
 
   const [dataOnlyForLoggedUsers, setData] = useState(null)

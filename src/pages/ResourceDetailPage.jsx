@@ -39,10 +39,13 @@ const getComments = async () => {
   }
 };
 
+// botones
+
 const handleDelete = async () => {
   try {
     const response = await service.delete(`/resources/${resource._id}`)
     console.log(response)
+    navigate("/ResourcePage")
   } catch (error) {
     console.log(error)
   }
