@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 
 function Navbar() {
 
-  const { authenticateUser, isLoggedIn } = useContext(AuthContext)
+  const { authenticateUser, isLoggedIn, userRole } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -33,6 +33,7 @@ function Navbar() {
       ?
         <>
           <Link to="/private-page">Ejemplo Privado</Link>
+          {userRole === "admin" && <Link to="/admin">Panel de control</Link>}
           <Link onClick={handleLogout}>Cerrar sesión</Link>
         </>
       : 

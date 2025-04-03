@@ -50,7 +50,7 @@ const handleDelete = async () => {
     console.log(error)
   }
 }
-if (!resource || comments === null) {  
+if (!resource || comments === null) {   //spinner
   return <div className="spinner"></div>;  
 }
 
@@ -61,14 +61,19 @@ const volverAtras = () => {
 return (
   <div>
     <h1>{resource.title}</h1>
-    <p>{resource.content}</p>
+    <h3>{resource.content}</h3>
 
     {userRole === "admin" && (
+      <div>
+        <button onClick={() => navigate(`/edit-resource/${id}`)}>
+          Editar Recurso
+          </button>
         <button onClick={handleDelete}>Borrar (ADMIN)</button>
-      )}
+      </div>)}
 
     <p>Categoria: {resource.category}</p>
     <p>Autor: {resource.author}</p>
+    <p>Origen: {resource.origen}</p>
 
     <button style={{position: "absolute", top: "20px", left: "20px", fontSize: "18px", padding: "10px 20px", backgroundColor: "#f2a90d"}}
       onClick={volverAtras}>Atrás

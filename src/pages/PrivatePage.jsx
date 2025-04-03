@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import service from '../services/config.services'
 import { AuthContext } from "../context/auth.context"
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 function PrivatePage() {
 
   const [dataOnlyForLoggedUsers, setData] = useState(null)
   const { userRole } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getData()
@@ -40,9 +42,11 @@ function PrivatePage() {
 
   return (
     <div>
-      <h3>Página privada</h3>
-      <p>Solo usuarios que hayan validado credenciales pueden acceder aquí.</p>
+      <h3>Te has logeado correctamente</h3>
+      <p>Vuelve a la página principal</p>
 
+      <button onClick={() => navigate("/")}>Home</button>
+      
       {userRole === "admin" && (
         <button onClick={handleDelete}>Borrar (ADMIN)</button>
       )}

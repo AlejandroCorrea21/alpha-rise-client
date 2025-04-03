@@ -11,7 +11,7 @@ import FavoritesPage from "./pages/FavoritesPage"
 import PageNotFound from "./pages/PageNotFound"
 import ResourceDetailPage from "./pages/ResourceDetailPage"
 import ResourcePage from "./pages/ResourcePage"
-
+import EditResource from "./components/EditResource"
 
 import Navbar from "./components/Navbar"
 import OnlyPrivate from "./components/OnlyPrivate";
@@ -38,6 +38,7 @@ function App() {
         <Route path="/PageNotFound" element={<PageNotFound />} />
         <Route path="/ResourcePage" element={<ResourcePage />} />
         <Route path="/resources/:id" element={<ResourceDetailPage />} />
+        <Route path="/edit-resource/:id" element={<EditResource />} />
 
       </Routes>
     </div>
