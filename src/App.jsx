@@ -36,7 +36,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/CommentsPage" element={<CommentsPage />} />
         <Route path="/FavoritesPage" element={<FavoritesPage />} />
-        <Route path="/PageNotFound" element={<PageNotFound />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/ResourcePage" element={<ResourcePage />} />
         <Route path="/resources/:id" element={<ResourceDetailPage />} />
         <Route path="/edit-resource/:id" element={<EditResource />} />

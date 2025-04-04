@@ -29,18 +29,19 @@ function Navbar() {
   return (
     <nav>
       <Link to="/">Home</Link>
+      <Link to="/About">About</Link>
       {isLoggedIn === true 
       ?
-        <>
+        <div>
           <Link to="/private-page">Ejemplo Privado</Link>
           {userRole === "admin" && <Link to="/admin">Panel de control</Link>}
           <Link onClick={handleLogout}>Cerrar sesión</Link>
-        </>
+        </div>
       : 
-        <>
+        <div>
           <Link to="/signup">Registro</Link>
           <Link to="/login">Acceso</Link>
-        </>
+        </div>
       }
       
 
