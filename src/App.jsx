@@ -12,6 +12,7 @@ import PageNotFound from "./pages/PageNotFound"
 import ResourceDetailPage from "./pages/ResourceDetailPage"
 import ResourcePage from "./pages/ResourcePage"
 import EditResource from "./components/EditResource"
+import EditComment from "./components/EditComment"
 
 import Navbar from "./components/Navbar"
 import OnlyPrivate from "./components/OnlyPrivate";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/ResourcePage" element={<ResourcePage />} />
         <Route path="/resources/:id" element={<ResourceDetailPage />} />
         <Route path="/edit-resource/:id" element={<EditResource />} />
+        <Route path="/edit-comment/:id" element={<EditComment />} />
 
       </Routes>
     </div>

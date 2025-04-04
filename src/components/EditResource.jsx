@@ -33,7 +33,7 @@ function EditResource() {
   };
 
   const handleEditSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     
     try {
       await service.put(`/resources/${id}`, {

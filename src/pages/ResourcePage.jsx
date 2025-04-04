@@ -37,7 +37,7 @@ function ResourcePage() {
             <h3>{resource.category}</h3>
             <Link to={`/resources/${resource._id}`}>
             <button style={{ backgroundColor: "#0373b8", color: "white", padding: "5px 10px", border: "none", cursor: "pointer", }}
-            >Editar</button>
+            >Ver Recurso</button>
             </Link>
           </div>
         ))}

@@ -40,7 +40,7 @@ const getComments = async () => {
   }
 };
 
-// botones
+// Botones
 
 // botón borrar recurso (admin)
 const handleDelete = async () => {
@@ -72,9 +72,10 @@ const handleCommentSubmit = async (event) => {
 };
 
 //botón borrar comentario
-const handleCommentDelete = async () => {
+const handleCommentDelete = async (commentId) => {
+  
   try {
-    const response = await service.delete(`/comments/${comment._id}`)
+    const response = await service.delete(`/comments/${commentId}`)
     console.log(response)
     getComments();
   } catch (error) {
@@ -120,11 +121,12 @@ return (
         <div key={comment._id}>
           <p>{comment.user.username}: {comment.text}</p> 
           
-          {(userRole === "admin" || comment.user._id === userRole) && (
-            
+          <div>
             <button onClick={() => handleCommentDelete(comment._id)}>
             Borrar</button>
-          )}
+            <button onClick={() => navigate(`/edit-comment/${comment._id}`)}>
+            Editar</button>
+          </div>
         </div>
       ))
     )}
