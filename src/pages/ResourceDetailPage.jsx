@@ -95,6 +95,11 @@ const volverAtras = () => {
 return (
   <div>
     <h1>{resource.title}</h1>
+    {resource.imageUrl && (
+      <div>
+        <img src={resource.imageUrl} alt="img recurso" style={{ maxWidth: "400px", borderRadius: "10px" }} />
+      </div>
+    )}
     <h3>{resource.content}</h3>
 
     {userRole === "admin" && (
