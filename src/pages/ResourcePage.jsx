@@ -28,9 +28,6 @@ function ResourcePage() {
     <div>
       <h1>Todos los Recursos</h1>
 
-          <button style={{ position: "absolute", top: "20px", left: "20px", fontSize: "18px", padding: "10px 20px", backgroundColor: "#892be9", }} onClick={volverAtras}
-          >Atrás</button>
-
         <h2>Filtrar por Categoría</h2>
           <button style={{ margin: "5px", padding: "10px", backgroundColor: "#299039", color: "white", }} onClick={() => setFilterResources("frase")} >
           Frase</button>

@@ -27,24 +27,31 @@ function Navbar() {
   }
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/About">About</Link>
-      {isLoggedIn === true 
-      ?
-        <div>
-          <Link to="/private-page">Ejemplo Privado</Link>
-          {userRole === "admin" && <Link to="/admin">Panel de control</Link>}
-          <Link onClick={handleLogout}>Cerrar sesión</Link>
-        </div>
-      : 
-        <div>
-          <Link to="/signup">Registro</Link>
-          <Link to="/login">Acceso</Link>
-        </div>
-      }
-      
+    <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px", backgroundColor: "#222", color: "#fff", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
 
+          <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
+          <Link to="/About" style={{ color: "white", textDecoration: "none" }}>About</Link>
+          <button onClick={() => navigate(-1)} style={{ fontSize: "16px", padding: "8px 16px", backgroundColor: "#f2a90d", border: "none", color: "white", cursor: "pointer", borderRadius: "4px" }}>
+            Atrás</button>
+
+      </div>
+
+
+      {isLoggedIn ? (
+        <div style={{ display: "flex", gap: "20px" }}>
+          <Link to="/private-page" style={{ color: "white", textDecoration: "none" }}>Ejemplo Privado</Link>
+          {userRole === "admin" && (
+            <Link to="/admin" style={{ color: "white", textDecoration: "none" }}>Panel de control</Link>
+          )}
+          <Link onClick={handleLogout} style={{ color: "white", textDecoration: "none", cursor: "pointer" }}>Cerrar sesión</Link>
+        </div>
+      ) : (
+        <div style={{ display: "flex", gap: "20px" }}>
+          <Link to="/signup" style={{ color: "white", textDecoration: "none" }}>Registro</Link>
+          <Link to="/login" style={{ color: "white", textDecoration: "none" }}>Acceso</Link>
+        </div>
+      )}
     </nav>
   );
 }

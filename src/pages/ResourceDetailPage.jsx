@@ -12,8 +12,8 @@ function ResourceDetailPage() {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState("")
   const navigate = useNavigate()
-  const { userRole } = useContext(AuthContext)
-  
+  const { userRole, loggedUserId } = useContext(AuthContext)
+ 
   useEffect(() => {
     getResources();
     getComments();
@@ -34,6 +34,7 @@ const getResources = async () => {
 const getComments = async () => {
   try {
     const response = await service.get(`/comments/resources/${id}`);
+    console.log(response.data)
     setComments(response.data);
   } catch (error) {
     console.log(error);
@@ -108,10 +109,6 @@ return (
     <p>Autor: {resource.author}</p>
     <p>Origen: {resource.origen}</p>
 
-    <button style={{position: "absolute", top: "20px", left: "20px", fontSize: "18px", padding: "10px 20px", backgroundColor: "#f2a90d"}}
-      onClick={volverAtras}>Atrás
-    </button>
-
     <h2>Comentarios:</h2>
 
     {comments === null || comments.length === 0 ? (
@@ -121,15 +118,17 @@ return (
         <div key={comment._id}>
           <p>{comment.user.username}: {comment.text}</p> 
           
-          <div>
-            <button onClick={() => handleCommentDelete(comment._id)}>
-            Borrar</button>
-            <button onClick={() => navigate(`/edit-comment/${comment._id}`)}>
-            Editar</button>
-          </div>
+          {(userRole === "admin" || comment.user._id === loggedUserId) && (
+
+        <div>
+          <button onClick={() => handleCommentDelete(comment._id)}>Borrar</button>
+          <button onClick={() => navigate(`/edit-comment/${comment._id}`)}>Editar</button>
         </div>
-      ))
-    )}
+
+      )}
+    </div>
+  ))
+)}
     <button onClick={handleCommentSubmit}>Añadir Comentario</button>
     <input type="text" value={newComment} onChange={(event) => setNewComment(event.target.value)} />
   </div>
