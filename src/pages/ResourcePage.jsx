@@ -8,6 +8,8 @@ function ResourcePage() {
   const navigate = useNavigate();
   const [filterResources, setFilterResources] = useState("frase");
 
+  // console.log("Filtrando", filterResources);
+
   useEffect(() => {
     getResources();
   }, [filterResources]); // lo monto y obtiene los recursos.
@@ -16,8 +18,14 @@ function ResourcePage() {
     navigate("/"); // Va atrás al pulsar con el botón (página / home)
   }
   const getResources = async () => {
+    
     try {
-      const response = await service.get(`/resources?category=${filterResources}`); // hago petición al back 
+      let response;
+      if (filterResources) {
+        response = await service.get(`/resources?category=${filterResources}`);
+      } else {
+        response = await service.get("/resources");
+      }
       setResources(response.data);
     } catch (error) {
       console.log(error);
@@ -29,15 +37,21 @@ function ResourcePage() {
       <h1>Todos los Recursos</h1>
 
         <h2>Filtrar por Categoría</h2>
+
           <button style={{ margin: "5px", padding: "10px", backgroundColor: "#299039", color: "white", }} onClick={() => setFilterResources("frase")} >
           Frase</button>
 
-          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#25348a", color: "white", }}
-          onClick={() => setFilterResources("texto")} >
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#25348a", color: "white", }} onClick={() => setFilterResources("texto bíblico")} >
           Texto</button>
 
-          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#731b2c", color: "white", }} onClick={() => setFilterResources("libros")} >
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#731b2c", color: "white", }} onClick={() => setFilterResources("libro")} >
           Libros</button>
+
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#888", color: "white" }} onClick={() => setFilterResources("otro")}>
+          Otro</button>
+
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#888", color: "white" }} onClick={() => setFilterResources("")}>
+          Mostrar Todos</button>
 
         {resources.map((resource) => (
 

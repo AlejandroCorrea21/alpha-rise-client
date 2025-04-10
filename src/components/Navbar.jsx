@@ -37,10 +37,11 @@ function Navbar() {
 
       </div>
 
+      {isLoggedIn && (
+        <Link to="/profile">Mi Perfil</Link>)}
 
       {isLoggedIn ? (
         <div style={{ display: "flex", gap: "20px" }}>
-          <Link to="/private-page" style={{ color: "white", textDecoration: "none" }}>Ejemplo Privado</Link>
           {userRole === "admin" && (
             <Link to="/admin" style={{ color: "white", textDecoration: "none" }}>Panel de control</Link>
           )}

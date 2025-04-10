@@ -34,7 +34,6 @@ const getResources = async () => {
 const getComments = async () => {
   try {
     const response = await service.get(`/comments/resources/${id}`);
-    console.log(response.data)
     setComments(response.data);
   } catch (error) {
     console.log(error);
