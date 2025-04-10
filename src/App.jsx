@@ -16,15 +16,13 @@ import MyProfilePage from "./components/MyProfilePage"
 import Navbar from "./components/Navbar"
 import OnlyPrivate from "./components/OnlyPrivate"
 import OnlyAdmin from "./components/OnlyAdmin"
+import Error500 from './components/Error500';
 
 function App() {
 
   return (
     <div>
       <Navbar />
-
-      <br />
-      <hr />
 
       <Routes>
         
@@ -42,6 +40,8 @@ function App() {
         <Route path="/edit-comment/:id" element={<EditComment />} />
         <Route path="/profile" element={<OnlyPrivate><MyProfilePage /></OnlyPrivate>} />
         <Route path="/admin" element={<OnlyAdmin><Admin /></OnlyAdmin>} />
+        <Route path="/500" element={<Error500 />} />
+
 
       </Routes>
     </div>
