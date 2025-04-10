@@ -36,6 +36,9 @@ function Navbar() {
             Atrás</button>
 
       </div>
+      {isLoggedIn && (
+      <Link to="/favorites">Favoritos</Link>
+      )}
 
       {isLoggedIn && (
         <Link to="/profile">Mi Perfil</Link>)}

@@ -7,23 +7,29 @@ import { AuthContext } from "../context/auth.context";
 
 function ResourceDetailPage() {
 
-  const { id } = useParams();
+  const { id } = useParams()
   const [resource, setResource] = useState(null)
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState("")
   const navigate = useNavigate()
-  const { userRole, loggedUserId } = useContext(AuthContext)
- 
+  const { userRole, loggedUserId, isLoggedIn } = useContext(AuthContext)
+  const [isFavorite, setIsFavorite] = useState(false)
+
   useEffect(() => {
+    if (loggedUserId) {
     getResources();
     getComments();
-}, []) //lo monto y pido los recursos y los comentarios.
+    }
+}, [loggedUserId]) //lo monto y pido los recursos y los comentarios.
 
 const getResources = async () => {
 
   try {
     const response = await service.get(`/resources/${id}`);
     setResource(response.data);
+    if (response.data.favorites?.includes(loggedUserId)) {
+      setIsFavorite(true);
+      }
   } catch (error) {
     console.log(error);
   }
@@ -83,6 +89,21 @@ const handleCommentDelete = async (commentId) => {
   }
 }
 
+//botón añadir favoritos
+const toggleFavorite = async () => {
+  try {
+    if (!isFavorite) {
+      await service.post(`/resources/${id}/favorite`);
+      setIsFavorite(true);
+    } else {
+      await service.delete(`/resources/${id}/favorite`);
+      setIsFavorite(false);
+    }
+  } catch (error) {
+    console.log("Error con favoritos:", error);
+  }
+};
+
 if (!resource || comments === null) {   //spinner
   return <div className="spinner"></div>;  
 }
@@ -94,6 +115,10 @@ const volverAtras = () => {
 return (
   <div>
     <h1>{resource.title}</h1>
+    {isLoggedIn && (
+    <button onClick={toggleFavorite}>{isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}</button>
+   )}
+
     {resource.imageUrl && (
       <div>
         <img src={resource.imageUrl} alt="img recurso" style={{ maxWidth: "400px", borderRadius: "10px" }} />
@@ -140,4 +165,4 @@ return (
 
 }
 
-  export default ResourceDetailPage
+export default ResourceDetailPage

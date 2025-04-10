@@ -16,7 +16,8 @@ import MyProfilePage from "./components/MyProfilePage"
 import Navbar from "./components/Navbar"
 import OnlyPrivate from "./components/OnlyPrivate"
 import OnlyAdmin from "./components/OnlyAdmin"
-import Error500 from './components/Error500';
+import Error500 from './components/Error500'
+import FavoritePage from "./pages/FavoritePage"
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/profile" element={<OnlyPrivate><MyProfilePage /></OnlyPrivate>} />
         <Route path="/admin" element={<OnlyAdmin><Admin /></OnlyAdmin>} />
         <Route path="/500" element={<Error500 />} />
+        <Route path="/favorites" element={<FavoritePage />} />
 
 
       </Routes>
