@@ -113,27 +113,36 @@ const volverAtras = () => {
 };
 
 return (
+
   <div>
     <h1>{resource.title}</h1>
-    {isLoggedIn && (
-    <button onClick={toggleFavorite}>{isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}</button>
-   )}
 
+    {isLoggedIn && (
+
+      <button style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#7e16a0", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }} onClick={toggleFavorite}>{isFavorite ? "Quitar de favoritos" : "Añadir a favoritos"}
+      </button>
+
+    )}
     {resource.imageUrl && (
+
       <div>
-        <img src={resource.imageUrl} alt="img recurso" style={{ maxWidth: "400px", borderRadius: "10px" }} />
+        <img src={resource.imageUrl} alt="img recurso" style={{ maxWidth: "400px", borderRadius: "10px" }}/>
       </div>
+
     )}
     <h3>{resource.content}</h3>
 
     {userRole === "admin" && (
-      <div>
-        <button onClick={() => navigate(`/edit-resource/${id}`)}>
-          Editar (ADMIN)
-          </button>
-        <button onClick={handleDelete}>Borrar (ADMIN)</button>
-      </div>)}
 
+      <div>
+        <button style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#f2a90d", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }} onClick={() => navigate(`/edit-resource/${id}`)}>
+          Editar (ADMIN)</button>
+
+        <button style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#c63c3c", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px", }} onClick={handleDelete}>
+          Borrar (ADMIN)</button>
+      </div>
+
+    )}
     <p>Categoria: {resource.category}</p>
     <p>Autor: {resource.author}</p>
     <p>Origen: {resource.origen}</p>
@@ -145,21 +154,29 @@ return (
     ) : (
       comments.map((comment) => (
         <div key={comment._id}>
-          <p>{comment.user.username}: {comment.text}</p> 
-          
+          <p>{comment.user.username}: {comment.text}</p>
+
           {(userRole === "admin" || comment.user._id === loggedUserId) && (
+            
+            <div>
+              <button onClick={() => navigate(`/edit-comment/${comment._id}`)} style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#f39c12", color: "white", border: "none", borderRadius: "4px", cursor: "pointer",fontSize: "16px",}}>
+                Editar</button>
 
-        <div>
-          <button onClick={() => handleCommentDelete(comment._id)}>Borrar</button>
-          <button onClick={() => navigate(`/edit-comment/${comment._id}`)}>Editar</button>
+              <button onClick={() => handleCommentDelete(comment._id)} style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#e74c3c",color: "white",border: "none",borderRadius: "4px",cursor: "pointer",fontSize: "16px",}}>
+                Borrar</button>
+            </div>
+          )}
         </div>
+      ))
+    )}
 
-      )}
+    <div style={{ marginTop: "20px" }}>
+
+      <input type="text"value={newComment}onChange={(event) => setNewComment(event.target.value)} style={{ padding: "10px",borderRadius: "4px",border: "1px solid #ddd",fontSize: "16px",width: "80%",}}/>
+      <button onClick={handleCommentSubmit}style={{margin: "5px",padding: "10px 20px",backgroundColor: "#299039",color: "white",border: "none",borderRadius: "4px",cursor: "pointer",fontSize: "16px",}}>
+        Añadir Comentario</button>
+
     </div>
-  ))
-)}
-    <button onClick={handleCommentSubmit}>Añadir Comentario</button>
-    <input type="text" value={newComment} onChange={(event) => setNewComment(event.target.value)} />
   </div>
 );
 

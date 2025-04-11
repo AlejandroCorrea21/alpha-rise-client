@@ -6,7 +6,6 @@ import Signup from "./pages/auth/Signup"
 import Admin from "./pages/Admin"
 import About from "./pages/About"
 import CommentsPage from "./pages/CommentsPage"
-import FavoritesPage from "./pages/FavoritesPage"
 import PageNotFound from "./pages/PageNotFound"
 import ResourceDetailPage from "./pages/ResourceDetailPage"
 import ResourcePage from "./pages/ResourcePage"
@@ -33,7 +32,6 @@ function App() {
         <Route path="/Admin" element={<Admin />} />
         <Route path="/About" element={<About />} />
         <Route path="/CommentsPage" element={<CommentsPage />} />
-        <Route path="/FavoritesPage" element={<FavoritesPage />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/ResourcePage" element={<ResourcePage />} />
         <Route path="/resources/:id" element={<ResourceDetailPage />} />

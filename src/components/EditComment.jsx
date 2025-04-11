@@ -48,7 +48,8 @@ function EditComment() {
           <h3>Comentario</h3>
           <input type="text" value={text} onChange={(event) => setText(event.target.value)} />
         </div>
-        <button type="submit">Guardar Cambios</button>
+        <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#299039", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
+        Guardar Cambios</button>
       </form>
     </div>
   );

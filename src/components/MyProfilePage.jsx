@@ -58,12 +58,18 @@ function MyProfilePage() {
           <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
         </div>
 
-        <button type="submit">Actualizar Perfil</button>
-      </form>
+        <div style={{ marginTop: "20px" }}>
 
-      <button onClick={() => navigate("/")}>Volver al inicio</button>
-    </div>
-  );
+          <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#299039", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
+          Actualizar Perfil</button>
+
+          <button onClick={() => navigate("/")} style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#3498db", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
+          Volver al inicio</button>
+
+      </div>
+    </form>
+  </div>
+);
 }
 
 export default MyProfilePage;

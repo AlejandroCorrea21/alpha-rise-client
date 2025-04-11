@@ -47,10 +47,10 @@ function ResourcePage() {
           <button style={{ margin: "5px", padding: "10px", backgroundColor: "#731b2c", color: "white", }} onClick={() => setFilterResources("libro")} >
           Libros</button>
 
-          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#888", color: "white" }} onClick={() => setFilterResources("otro")}>
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#cd33ff", color: "white" }} onClick={() => setFilterResources("otro")}>
           Otro</button>
 
-          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#888", color: "white" }} onClick={() => setFilterResources("")}>
+          <button style={{ margin: "5px", padding: "10px", backgroundColor: "#ff5733", color: "white" }} onClick={() => setFilterResources("")}>
           Mostrar Todos</button>
 
         {resources.map((resource) => (

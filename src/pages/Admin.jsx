@@ -100,7 +100,9 @@ function Admin() {
           {imageUrl ? <div><img src={imageUrl} alt="img" width={200} /></div> : null}
         </div>
 
-        <button type="submit">Crear Recurso</button>
+        <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#f39c12", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
+          Crear Recurso</button>
+
       </form>
     </div>
   );

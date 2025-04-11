@@ -29,19 +29,18 @@ function Navbar() {
   return (
     <nav style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px", backgroundColor: "#222", color: "#fff", gap: "20px" }}>
       <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-
-          <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
-          <Link to="/About" style={{ color: "white", textDecoration: "none" }}>About</Link>
-          <button onClick={() => navigate(-1)} style={{ fontSize: "16px", padding: "8px 16px", backgroundColor: "#f2a90d", border: "none", color: "white", cursor: "pointer", borderRadius: "4px" }}>
-            Atrás</button>
-
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>Home</Link>
+        <Link to="/About" style={{ color: "white", textDecoration: "none" }}>About</Link>
+        <button onClick={() => navigate(-1)} style={{ fontSize: "16px", padding: "8px 16px", backgroundColor: "#f2a90d", border: "none", color: "white", cursor: "pointer", borderRadius: "4px" }}>
+          Atrás</button>
       </div>
       {isLoggedIn && (
-      <Link to="/favorites">Favoritos</Link>
+        <Link to="/favorites" style={{ color: "white", textDecoration: "none" }}>Favoritos</Link>
       )}
 
       {isLoggedIn && (
-        <Link to="/profile">Mi Perfil</Link>)}
+        <Link to="/profile" style={{ color: "white", textDecoration: "none" }}>Mi Perfil</Link>
+      )}
 
       {isLoggedIn ? (
         <div style={{ display: "flex", gap: "20px" }}>

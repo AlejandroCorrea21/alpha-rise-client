@@ -37,9 +37,8 @@ function FavoritePage() {
             <li key={resource._id}>
               <h3>{resource.title}</h3>
               <p>{resource.category}</p>
-              <button onClick={() => navigate(`/resources/${resource._id}`)}>
-                Ver Detalles
-              </button>
+              <button onClick={() => navigate(`/resources/${resource._id}`)} style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#2980b9", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
+                Ver Detalles</button>
             </li>
           ))}
         </ul>
