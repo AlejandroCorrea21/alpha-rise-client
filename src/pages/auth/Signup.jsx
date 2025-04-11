@@ -78,7 +78,7 @@ function Signup() {
 
         <br />
 
-        <button type="submit">Registrar</button>
+        <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#298b43", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>Registrar</button>
 
         {errorMessage !== null ? <p>{errorMessage}</p> : null}
 

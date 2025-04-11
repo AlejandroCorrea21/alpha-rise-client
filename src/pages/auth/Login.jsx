@@ -78,7 +78,7 @@ function Login() {
 
         <br />
 
-        <button type="submit">Acceder</button>
+        <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#5768a2", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>Acceder</button>
 
         {errorMessage !== null ? <p>{errorMessage}</p> : null}
 
