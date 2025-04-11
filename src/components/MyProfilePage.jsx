@@ -10,7 +10,7 @@ function MyProfilePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const userData = async () => {
       try {
         const response = await service.get(`/users/profile`);
         setUser(response.data);
@@ -20,7 +20,7 @@ function MyProfilePage() {
         console.log(error);
       }
     };
-    fetchUserData();
+    userData();
   }, []);
   
   const handleUserSubmit = async (event) => {

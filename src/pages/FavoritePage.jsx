@@ -4,13 +4,13 @@ import service from "../services/config.services";
 import { AuthContext } from "../context/auth.context";
 
 function FavoritePage() {
-  const [favorites, setFavorites] = useState([]);
-  const { isLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const [favorites, setFavorites] = useState([])
+  const { isLoggedIn } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    getFavoriteResources();
-  }, []);
+    getFavoriteResources()
+  }, [])
 
   const getFavoriteResources = async () => {
     try {
@@ -19,7 +19,12 @@ function FavoritePage() {
     } catch (error) {
       console.log("Error al obtener favoritos:", error);
     }
-  }
+  };
+
+  const handleSubmit = (event, id) => {
+    event.preventDefault();
+    navigate(`/resources/${id}`);
+  };
 
   if (!isLoggedIn) {
     return <p>Debes iniciar sesión para ver tus favoritos.</p>;
@@ -37,8 +42,14 @@ function FavoritePage() {
             <li key={resource._id}>
               <h3>{resource.title}</h3>
               <p>{resource.category}</p>
-              <button onClick={() => navigate(`/resources/${resource._id}`)} style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#2980b9", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px" }}>
-                Ver Detalles</button>
+              <form onSubmit={(event) => handleSubmit(event, resource._id)}>
+
+                <div>
+                  <button type="submit" style={{ margin: "5px", padding: "10px 20px", backgroundColor: "#2980b9", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "16px"}}>
+                    Ver Detalles</button>
+                </div>
+
+              </form>
             </li>
           ))}
         </ul>
